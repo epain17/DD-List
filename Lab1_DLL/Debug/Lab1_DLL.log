@@ -1,0 +1,9 @@
+﻿  stdafx.cpp
+  Node.cpp
+c:\users\emil\documents\visual studio 2015\projects\lab1_dll\lab1_dll\node.h(11): warning C4800: 'float': forcing value to bool 'true' or 'false' (performance warning)
+  Lab1_DLL.cpp
+  Link.cpp
+  DLList.cpp
+  Generating Code...
+  Lab1_DLL.vcxproj -> C:\Users\Emil\documents\visual studio 2015\Projects\Lab1_DLL\Debug\Lab1_DLL.exe
+  Lab1_DLL.vcxproj -> C:\Users\Emil\documents\visual studio 2015\Projects\Lab1_DLL\Debug\Lab1_DLL.pdb (Full PDB)
