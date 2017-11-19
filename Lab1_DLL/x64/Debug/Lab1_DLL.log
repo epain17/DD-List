@@ -1,7 +1,5 @@
-﻿  stdafx.cpp
-  Node.cpp
+﻿  Node.cpp
 c:\users\emil\documents\github\dd-list\lab1_dll\node.h(11): warning C4800: 'float': forcing value to bool 'true' or 'false' (performance warning)
-  Lab1_DLL.cpp
   Link.cpp
   DLList.cpp
   Generating Code...

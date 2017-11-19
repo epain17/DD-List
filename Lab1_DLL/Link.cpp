@@ -40,7 +40,9 @@ template<class T>
 T*Link<T>::DeleteAfter()
 {
 	T * temp = this->next;
-	this->next = nullptr;
+	
+
+	temp = nullptr;
 	return temp;
 }
 

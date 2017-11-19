@@ -6,13 +6,48 @@
 template <class T>
 class DLList :public Link<T>
 {
-
+	Link<T> * refLink;
 public:
 	DLList();
 	~DLList() = default;
-	T * First();
-	T * Last();
-	T * PushFront(T * item);
+
+	T * First()
+	{
+		return RefLink->next
+	}
+
+	T * Last()
+	{
+		return RefLink->prev;
+	}
+
+	T * PushFront(T * item)
+	{
+		if (RefLink->next == nullptr)
+		{
+			Link<T> * newLink = item;
+			RefLink->next = item;
+			RefLink->prev = item;
+			newLink->next = RefLink;
+			newLink->prev = RefLink;
+		}
+		else
+		{
+			/*Link<T> *currentlyFirst = RefLink->next;
+			Link<T> *newLink = item;
+			currentlyFirst->prev = newLink;
+			newLink->next = currentlyFirst;
+			RefLink->next = newLink;
+			newLink->prev = RefLink;*/
+			
+			refLink->next->prev = item;
+			item->next = refLink->next;
+			item->next = refLink->next;
+			item->prev = refLink;
+			
+		}
+	}
+
 	T * PopFront();
 	T * PushBack(T * item);
 
