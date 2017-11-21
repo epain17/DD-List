@@ -6,7 +6,7 @@
 template <class T>
 class DLList :public Link<T>
 {
-	Link<T> * refLink;
+	Link<T> * RefLink;
 public:
 	DLList();
 	~DLList() = default;
@@ -23,10 +23,11 @@ public:
 
 	T * PushFront(T * item)
 	{
-		if (RefLink->next == nullptr)
+		if (RefLink == nullptr)
 		{
-			Link<T> * newLink = item;
-			RefLink->next = item;
+			Link<T> * newLink;
+			
+			RefLink->InsertAfter(item);
 			RefLink->prev = item;
 			newLink->next = RefLink;
 			newLink->prev = RefLink;
@@ -40,15 +41,26 @@ public:
 			RefLink->next = newLink;
 			newLink->prev = RefLink;*/
 			
-			refLink->next->prev = item;
-			item->next = refLink->next;
-			item->next = refLink->next;
-			item->prev = refLink;
+			RefLink->next->prev = item;
+			item->next = RefLink->next;
+			item->next = RefLink->next;
+			item->prev = RefLink;
 			
 		}
 	}
 
-	T * PopFront();
+	T * PopFront()
+	{
+		if (RefLink->next == nullptr)
+		{
+			return 0;
+		}
+
+		else
+		{
+
+		}
+	}
 	T * PushBack(T * item);
 
 	template<class Argument>
