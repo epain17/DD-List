@@ -3,14 +3,14 @@
 #include "Link.h"
 class Node : public Link<Node>
 {
-
-	float val;
 public:
-	Node(float v) :val(v){};
-
-	bool match(float rhs) { return val = rhs; };
+	float data;
+	Node(float v = 0) :data(v) {}
+	bool Match(float v) { return data == v; }
+	virtual std::ostream& Print(std::ostream& cout) const {
+		return cout << data;
+	}
 	
-	~Node();
 };
 
 #endif

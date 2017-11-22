@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <assert.h>
 
 template <class T>
 class DLList;
@@ -7,76 +8,88 @@ class DLList;
 template <class T> class Link 
 {
 	Link* next = nullptr;
-	Link* prev = nullptr
+	Link* prev = nullptr;
 	friend class DLList<T>;
 
 public:
-	Link();
+	Link(){}
 	virtual ~Link() = default;
+	//Fix
+	bool Invariant()
+	{
+		return (next->prev == this && prev->next == this);
+
+	}
+	
+	//Fix
 	T* Next()
 	{
-		return next;
-	}
+		return static_cast <T*> (next);
 
-	T*Prev()
+	}
+	//Fix
+	T* Prev()
 	{
-		return prev;
+		
+		return static_cast <T*> (prev);
 	}
 
 	T* InsertAfter(T * TToInsert)
 	{
-		if (next == nullptr)
+		assert(Invariant());
+		TToInsert->next = next;
+		TToInsert->prev = this;
+		if (next != nullptr)
 		{
-			next = TToInsert;
+			next->prev = TToInsert;
 		}
-		else
-		{
-			Link<T> * temp = next;
-			next = TToInsert;
-			next->next = temp;
 
-		}
+		next = TToInsert;
+		assert(Invariant());
 		return TToInsert;
 	}
 
 	T* InsertBefore(T * TToInsert)
 	{
-		if (prev == nullptr)
+		assert(Invariant());
+		TToInsert->prev = prev;
+		TToInsert->next = this;
+		if (prev != nullptr)
 		{
-			prev = TToInsert;
+			prev->next = TToInsert;
 		}
-		else
-		{
-			Link<T> * temp = prev;
-			prev = TToInsert;
-			prev->prev = temp;
-
-		}
+		prev = TToInsert;
+		assert(Invariant());
 		return TToInsert;
 	}
+	//Fix
 	T* DeleteAfter()
 	{
 		if (next == nullptr)
 		{
-			std::cout << "nothing to delete";
-			return NULL;
+			return nullptr;
 		}
+		T* temp = static_cast <T*>(this->next);
+		this->next = temp->next;
+		temp->next->prev = this;
+		temp -> next = nullptr;
+		temp->prev = nullptr;
+		return temp;
 
-		else
-		{
-			Link<T> * temp = next;
-
-		}
+		
 	}
 	
 
 	template<class Argument> 
-	T* FindNext(const Argument& searchFor);
+	T* FindNext(const Argument& searchFor)
+	{
+	/*	T * current = static_cast <T*> (current);
+		current->Match(searchFor);*/
+		return NULL;
+	}
 
 	virtual std::ostream& Print(std::ostream& cout) { return cout; }
 
 
 };
-
-
 

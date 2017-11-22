@@ -6,62 +6,49 @@
 template <class T>
 class DLList :public Link<T>
 {
-	Link<T> * RefLink;
+	
 public:
-	DLList();
+	DLList() 
+	{
+		prev = this;
+		next = this;
+		
+	}
 	~DLList() = default;
 
 	T * First()
 	{
-		return RefLink->next
+		return this->Next();
 	}
 
 	T * Last()
 	{
-		return RefLink->prev;
+		return this->Prev();
 	}
 
 	T * PushFront(T * item)
 	{
-		if (RefLink == nullptr)
-		{
-			Link<T> * newLink;
-			
-			RefLink->InsertAfter(item);
-			RefLink->prev = item;
-			newLink->next = RefLink;
-			newLink->prev = RefLink;
-		}
-		else
-		{
-			/*Link<T> *currentlyFirst = RefLink->next;
-			Link<T> *newLink = item;
-			currentlyFirst->prev = newLink;
-			newLink->next = currentlyFirst;
-			RefLink->next = newLink;
-			newLink->prev = RefLink;*/
-			
-			RefLink->next->prev = item;
-			item->next = RefLink->next;
-			item->next = RefLink->next;
-			item->prev = RefLink;
-			
-		}
+		
+		this->InsertBefore(item);
+		return item;
 	}
 
 	T * PopFront()
 	{
-		if (RefLink->next == nullptr)
-		{
-			return 0;
-		}
-
-		else
-		{
-
-		}
+		this->DeleteAfter();
+		return  0;
 	}
-	T * PushBack(T * item);
+	T * PushBack(T * item)
+	{
+		this->InsertAfter(item);
+		return item;
+	}
+
+	bool Invariant()
+	{
+		return (next->prev == this && prev->next == this);
+		
+	}
 
 	template<class Argument>
 	T * FindFirst(const Argument& searchFor)
@@ -73,9 +60,9 @@ public:
 	{
 		return dLList.Print(cout);
 	}
-	void Check();
+	void Check() {}
 private:
-	std::ostream& Print(std::ostream& cout) 
+	std::ostream& Print(std::ostream& cout)
 	{
 		return cout;
 	}
