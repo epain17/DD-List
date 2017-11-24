@@ -23,7 +23,7 @@ int main()
 	myList.PushBack(new Node(2));
 	myList.PushBack(new Node(3));
 	assert(myList.Invariant());
-	//assert(myList.Last()->Next() == nullptr);
+	assert(myList.Last()->Next() == nullptr);
 	std::cout << myList;    //should be 1 2 3 1 2 3
 
 	Node * tempA3 = myList.FindNext(3);

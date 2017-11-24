@@ -16,6 +16,16 @@ public:
 	}
 	~DLList() = default;
 
+
+	bool isEmpty()
+	{
+		if (prev == this && next == this)
+		{
+			return true;
+		}
+		return false;
+	}
+
 	T * First()
 	{
 		return this->Next();
@@ -26,33 +36,65 @@ public:
 		return this->Prev();
 	}
 
-	T * PushFront(T * item)
-	{
-		
-		this->InsertBefore(item);
-		return item;
-	}
-
 	T * PopFront()
 	{
 		this->DeleteAfter();
 		return  0;
 	}
+
+	T * PushFront(T * item)
+	{	
+		if (isEmpty())
+		{
+			prev = item;
+			next = item;	
+			return item;
+		}
+		else
+		{
+			prev->prev = item;
+			item->next = next;
+			next = item;
+			item->prev = nullptr;
+			 
+			 
+			return item;
+		}
+
+		return item;
+	}
+
 	T * PushBack(T * item)
 	{
-		this->InsertAfter(item);
+		if (isEmpty())
+		{
+			prev = item;
+			next = item;
+			return item;
+		}
+		else
+		{
+			prev->next = item;
+			item->prev = prev;
+			prev = item;
+			item->next = nullptr;
+			return item;
+		}
+
 		return item;
 	}
 
 	bool Invariant()
 	{
-		return (next->prev == this && prev->next == this);
+		return (next->prev == this && prev->next == this || next->prev == nullptr && prev->next == nullptr);
 		
 	}
 
 	template<class Argument>
 	T * FindFirst(const Argument& searchFor)
 	{
+		
+		
 		return FindNext(searchFor);
 	}
 
