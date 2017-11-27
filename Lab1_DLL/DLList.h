@@ -38,8 +38,8 @@ public:
 
 	T * PopFront()
 	{
-		this->DeleteAfter();
-		return  0;
+		return this->DeleteAfter();
+		
 	}
 
 	T * PushFront(T * item)

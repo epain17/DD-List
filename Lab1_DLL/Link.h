@@ -40,7 +40,7 @@ public:
 	T* InsertAfter(T * TToInsert)
 	{
 
-		assert(Invariant());
+		//assert(Invariant());
 		TToInsert->next = next;
 		TToInsert->prev = this;
 		if (next != nullptr)
@@ -49,7 +49,7 @@ public:
 		}
 
 		next = TToInsert;
-		assert(Invariant());
+		//assert(Invariant());
 		return TToInsert;
 
 
@@ -60,7 +60,7 @@ public:
 	T* InsertBefore(T * TToInsert)
 	{
 
-		assert(Invariant());
+		//assert(Invariant());
 		TToInsert->prev = prev;
 		TToInsert->next = this;
 		if (prev != nullptr)
@@ -68,7 +68,7 @@ public:
 			prev->next = TToInsert;
 		}
 		prev = TToInsert;
-		assert(Invariant());
+		//assert(Invariant());
 		return TToInsert;
 
 	}
@@ -79,13 +79,21 @@ public:
 		{
 			return nullptr;
 		}
-	
-		//Peka om pekarna
-		this->next = next->Next();
-		this->next->prev = this;
 		
+			//Peka om pekarna
+			T* temp = this->Next();
+			this->next = next->Next();
+
+			if (next == nullptr)
+			{
+				return dynamic_cast <T*> (temp);
+			}
+			next->prev = this;
+
+			return dynamic_cast <T*> (temp);
+
 		
-		return dynamic_cast <T*> (this);
+
 
 
 	}
