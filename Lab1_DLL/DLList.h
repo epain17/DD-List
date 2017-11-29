@@ -38,6 +38,12 @@ public:
 
 	T * PopFront()
 	{
+		if (isEmpty() == true)
+		{
+			prev = this;
+			next = this;
+			return nullptr;
+		}
 		return this->DeleteAfter();
 		
 	}
@@ -52,12 +58,15 @@ public:
 		}
 		else
 		{
-			prev->prev = item;
+
+		/*	next->prev = item;
 			item->next = next;
 			next = item;
+			item->prev = nullptr;*/
+			item->next = next;
+			next->prev = item;
+			next = item;
 			item->prev = nullptr;
-			 
-			 
 			return item;
 		}
 
@@ -74,11 +83,17 @@ public:
 		}
 		else
 		{
-			prev->next = item;
 			item->prev = prev;
+			prev->next = item;
 			prev = item;
 			item->next = nullptr;
+
 			return item;
+			/*prev->next = item;
+			item->prev = prev;
+			prev = item;
+			item->next = nullptr;*/
+
 		}
 
 		return item;
@@ -86,7 +101,8 @@ public:
 
 	bool Invariant()
 	{
-		return (next->prev == this && prev->next == this || next->prev == nullptr && prev->next == nullptr);
+		return (next->prev == this && prev->next == this || 
+			next->prev == nullptr && prev->next == nullptr);
 		
 	}
 

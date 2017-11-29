@@ -1,5 +1,11 @@
 // Lab1_DLL.cpp : Defines the entry point for the console application.
 //
+#ifdef _DEBUG
+#ifndef DBG_NEW
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new DBG_NEW
+#endif
+#endif  // _DEBUG
 
 #include "stdafx.h"
 #include "Link.h"
@@ -7,11 +13,13 @@
 #include "Node.h"
 #include <assert.h>
 
-
+//Fixa så att pekarna pekar på varandra i listan på slutet
 
 
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	DLList<Node> myList;
 	assert(myList.Invariant());
 	Node * nodeA3 = myList.PushFront(new Node(3));
