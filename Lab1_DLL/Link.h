@@ -25,13 +25,13 @@ public:
 
 
 	//Fix
-	T* Next()
+	 T* const Next()
 	{
 		return dynamic_cast <T*> (next);
 
 	}
 
-	T* Prev()
+	T* const Prev()
 	{
 
 		return dynamic_cast <T*> (prev);
@@ -84,16 +84,17 @@ public:
 			return dynamic_cast <T*> (temp);
 		}
 
-		//Peka om pekarna
 		this->next = next->Next();
+		next->prev = this;
+		return dynamic_cast <T*> (temp);
 
-		if (next == nullptr)
+		//Peka om pekarna
+
+	/*	if (next == nullptr)
 		{
 			return dynamic_cast <T*> (temp);
-		}
-		next->prev = this;
+		}*/
 
-		return dynamic_cast <T*> (temp);
 
 
 	}

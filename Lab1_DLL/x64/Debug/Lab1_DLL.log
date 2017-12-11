@@ -1,17 +1,23 @@
-﻿  DLList.cpp
-  Generating Code...
-  Compiling...
-  Node.cpp
-  Link.cpp
-  Lab1_DLL.cpp
+﻿  Lab1_DLL.cpp
 c:\users\emil\documents\github\dd-list\lab1_dll\lab1_dll.cpp(5): warning C4603: 'DBG_NEW': macro is not defined or definition is different after precompiled header use
   c:\users\emil\documents\github\dd-list\lab1_dll\lab1_dll.cpp(5): note: Add macro to precompiled header instead of defining here
   c:\users\emil\documents\github\dd-list\lab1_dll\lab1_dll.cpp(10): note: use of precompiled header
 c:\users\emil\documents\github\dd-list\lab1_dll\lab1_dll.cpp(6): warning C4603: 'new': macro is not defined or definition is different after precompiled header use
   c:\users\emil\documents\github\dd-list\lab1_dll\lab1_dll.cpp(6): note: Add macro to precompiled header instead of defining here
   c:\users\emil\documents\github\dd-list\lab1_dll\lab1_dll.cpp(10): note: use of precompiled header
-c:\users\emil\documents\github\dd-list\lab1_dll\link.h(37): error C2059: syntax error: 'const'
-  c:\users\emil\documents\github\dd-list\lab1_dll\link.h(35): note: while compiling class template member function 'Node *Link<Node>::Prev(void)'
-  c:\users\emil\documents\github\dd-list\lab1_dll\lab1_dll.cpp(53): note: see reference to function template instantiation 'Node *Link<Node>::Prev(void)' being compiled
-  c:\users\emil\documents\github\dd-list\lab1_dll\node.h(5): note: see reference to class template instantiation 'Link<Node>' being compiled
-  Generating Code...
+c:\users\emil\documents\github\dd-list\lab1_dll\link.h(113): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+  c:\users\emil\documents\github\dd-list\lab1_dll\lab1_dll.cpp(39): note: see reference to function template instantiation 'T *Link<T>::FindNext<int>(const Argument &)' being compiled
+          with
+          [
+              T=Node,
+              Argument=int
+          ]
+  c:\users\emil\documents\github\dd-list\lab1_dll\lab1_dll.cpp(39): note: see reference to function template instantiation 'T *Link<T>::FindNext<int>(const Argument &)' being compiled
+          with
+          [
+              T=Node,
+              Argument=int
+          ]
+c:\users\emil\documents\github\dd-list\lab1_dll\link.h(125): warning C4715: 'Link<Node>::FindNext<int>': not all control paths return a value
+  Lab1_DLL.vcxproj -> C:\Users\Emil\Documents\GitHub\DD-List\x64\Debug\Lab1_DLL.exe
+  Lab1_DLL.vcxproj -> C:\Users\Emil\Documents\GitHub\DD-List\x64\Debug\Lab1_DLL.pdb (Full PDB)

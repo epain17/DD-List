@@ -33,6 +33,8 @@ int main()
 	assert(myList.Invariant());
 	assert(myList.Last()->Next() == nullptr);
 	std::cout << myList;    //should be 1 2 3 1 2 3
+	std::cout << "" << std::endl;
+
 
 	Node * tempA3 = myList.FindNext(3);
 	assert(tempA3 == nodeA3);
@@ -48,11 +50,14 @@ int main()
 
 	nodeA2->DeleteAfter();
 	std::cout << myList;    //1 2 2 3
+	std::cout << "" << std::endl;
+
 
 	myList.First()->Next()->InsertAfter(tempA3)->InsertAfter(tempB1);
 	assert(myList.Last()->Prev()->data == 2);
 	assert(myList.Invariant());
 	std::cout << myList;    //should be 1 2 3 1 2 3
+	std::cout << "" << std::endl;
 	{Node* t = myList.PopFront(); assert(t->data == 1); delete t; }
 	{Node* t = myList.PopFront(); assert(t->data == 2); delete t; }
 	{Node* t = myList.PopFront(); assert(t->data == 3); delete t; }

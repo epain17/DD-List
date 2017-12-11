@@ -26,7 +26,7 @@ public:
 		return false;
 	}
 
-	T * First()
+	T * First() 
 	{
 		return this->Next();
 	}
@@ -40,8 +40,6 @@ public:
 	{
 		if (isEmpty() == true)
 		{
-			prev = this;
-			next = this;
 			return nullptr;
 		}
 		return this->DeleteAfter();
@@ -122,6 +120,11 @@ public:
 private:
 	std::ostream& Print(std::ostream& cout)
 	{
+		for (Link<Node> *tempNode = this->Next(); tempNode != nullptr; tempNode = tempNode->Next())
+		{
+			dynamic_cast <T*> (tempNode)->Print(cout);
+
+		}
 		return cout;
 	}
 
